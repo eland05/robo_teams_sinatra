@@ -1,1 +1,7 @@
-<p>display teams for current user and link to form to create a new team</p>
+<p>Your Teams:</p>
+<ul>
+  <%@teams.each do |team|%>
+    <li><%=team.team_name%></li>
+  <%end%>
+</ul>
+<br></br>

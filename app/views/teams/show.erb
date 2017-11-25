@@ -1,0 +1,18 @@
+<h3>Your New Team:</h3>
+
+<h4>Team Name: <%=@team.team_name%></h4>
+<h4>Team Number: <%=@team.number%></h4>
+
+<h4>Team Members: </h4>
+<ul>
+  <%@team.members.each do |m|%>
+    <li><%=m.name%>(<%=m.title%>)</li>
+  <%end%>
+</ul>
+
+<h4>Team Sponsors: </h4>
+<ul>
+  <%@team.sponsors.each do |s|%>
+    <li><%=s.name%></li>
+  <%end%>
+</ul>

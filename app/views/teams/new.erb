@@ -1,0 +1,52 @@
+<h4>Team Info:</h4>
+<form class="" action="/teams/new" method="post">
+
+  <label for="team_name">Team Name:</label>
+  <input type="text" name="team_info[team_name]" value=""><br>
+
+  <label for="number">Team Number:</label>
+  <input type="text" name="team_info[number]" value=""><br>
+
+  <h4>Team Members:</h4>
+
+  <label for="member_name_1">Member Name:</label>
+  <input type="text" id = "member_name_1" name="team[members][][name]" value="">
+  <label for="member_title_1">Member Title:</label>
+  <input type="text" id = "member_title_1" name="team[members][][title]" value="">
+  <br>
+  <label for="member_name_2">Member Name:</label>
+  <input type="text" id = "member_name_2" name="team[members][][name]" value="">
+  <label for="member_title_2">Member Title:</label>
+  <input type="text" id = "member_title_2" name="team[members][][title]" value="">
+  <br>
+  <label for="member_name_3">Member Name:</label>
+  <input type="text" id = "member_name_3" name="team[members][][name]" value="">
+  <label for="member_title_3">Member Title:</label>
+  <input type="text" id = "member_title_3" name="team[members][][title]" value="">
+  <br>
+  <label for="member_name_4">Member Name:</label>
+  <input type="text" id = "member_name_4" name="team[members][][name]" value="">
+  <label for="member_title_4">Member Title:</label>
+  <input type="text" id = "member_title_4" name="team[members][][title]" value="">
+  <br>
+  <label for="member_name_5">Member Name:</label>
+  <input type="text" id = "member_name_5" name="team[members][][name]" value="">
+  <label for="member_title_5">Member Title:</label>
+  <input type="text" id = "member_title_5" name="team[members][][title]" value="">
+  <br></br>
+
+  <h4>Team Sponsors:</h4>
+
+  <%Sponsor.all.each do |sponsor|%>
+    <input type="checkbox" name="team[sponsor_ids][]" value="<%=sponsor.id%>" id="<%=sponsor.id%>"><%=sponsor.name%></input>
+  <%end%>
+  <br></br>
+  <label>and/or, create a new sponsor:</label>
+  <br>
+  <label>Sponsor Name:</label>
+  <input type="text" name="sponsor[name]"></input>
+  <br></br>
+
+  <input type="submit" name="" value="Create Team">
+</form>
+<br></br>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <title>RoboTeams</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to RoboTeams</h1>
+      <% if logged_in? %>
+      <h3>You are logged in as: <%=current_user.username %></h3>
+      <%end %>
+      <%= yield %>
+
+
+    </div>
+    <nav>
+      <% if logged_in? %>
+
+        <a href="/teams/new"> New Team </a><br>
+        <a href="/teams"> All of My Teams </a><br>
+        <h4><a href="/logout"> Log Out </a></h4>
+
+
+      <% else %>
+      <h4><a href="/login">Sign in</a> or <a href="/signup">Sign Up</a> to create your list of teams.</h4>
+
+      <%end %>
+
+    </nav>
+  </body>
+</html>
