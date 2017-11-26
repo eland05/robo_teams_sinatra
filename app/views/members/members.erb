@@ -1,0 +1,11 @@
+<h4>Your Teams and Their Members:
+  (click on a team member to edit their name or title)</h4>
+
+<%@teams.each do |t|%>
+  <%=t.team_name%>
+  <ul>
+    <%t.members.each do |m|%>
+      <li><a href="/members/<%=m.id%>/edit"><%=m.name%>(<%=m.title%>)</a></li>
+      <%end%>
+  </ul>
+  <%end%>

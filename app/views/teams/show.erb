@@ -1,5 +1,3 @@
-<h3>Your New Team:</h3>
-
 <h4>Team Name: <%=@team.team_name%></h4>
 <h4>Team Number: <%=@team.number%></h4>
 
@@ -15,4 +13,6 @@
   <%@team.sponsors.each do |s|%>
     <li><%=s.name%></li>
   <%end%>
-</ul>
+</ul><br></br>
+
+<a href="/teams/<%=@team.id%>/edit">Edit this Team</a>

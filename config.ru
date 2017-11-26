@@ -4,6 +4,8 @@ raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
 end
 use Rack::MethodOverride
 
+use SponsorController
+use MembersController
 use TeamsController
 use UsersController
 run ApplicationController

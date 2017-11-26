@@ -1,0 +1,13 @@
+<h3>Edit Team Member Information</h3>
+<form class="" action="/members/<%=@member.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="name">Member Name:</label>
+  <input type="text" name="member[name]" value="<%=@member.name%>"><br>
+
+  <label for="title">Member title:</label>
+  <input type="text" name="member[title]" value="<%=@member.title%>"><br></br>
+
+  <input type="submit" name="" value="Update Member Info"><br></br>
+
+</form>

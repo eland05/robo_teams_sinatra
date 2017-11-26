@@ -1,0 +1,11 @@
+<h4>Current Sponsors:
+  (click on a sponsor to edit their name)</h4>
+
+<ul>
+  <%Sponsor.all.each do |s|%>
+    <li><a href="/sponsors/<%=s.id%>/edit"><%=s.name%></a></li>
+  <%end%>
+</ul><br></br>
+
+<a href="/sponsor/new">Add A New Sponsor</a>
+<br></br>

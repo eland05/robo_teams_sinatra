@@ -1,7 +1,7 @@
-<p>Your Teams:</p>
+<h4>Your Teams:</h4>
 <ul>
   <%@teams.each do |team|%>
-    <li><%=team.team_name%></li>
+    <li><a href="/teams/<%=team.id%>"><%=team.team_name%></a></li>
   <%end%>
 </ul>
 <br></br>

@@ -1,0 +1,14 @@
+<h3>Add a New Sponsor:</h3>
+<form class="" action="/sponsors" method="post">
+
+  <label for="name">Sponsor Name:</label>
+  <input type="text" name="sponsor[name]" value=""><br></br>
+
+  <label>Select Teams this Sponsor Contributes to:</label><br>
+
+  <%current_user.teams.each do |team|%>
+    <input type="checkbox" name="sponsor[team_ids][]" value="<%=team.id%>" id="<%=team.id%>"><%=team.team_name%>-<%=team.number%></input>
+  <%end%></br></br>
+
+  <input type="submit" name="" value="Create Sponsor"><br></br>
+</form>

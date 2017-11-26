@@ -1,0 +1,9 @@
+<h3>Edit Sponsor Name:</h3>
+<form class="" action="/sponsors/<%=@sponsor.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="name">Sponsor Name:</label>
+  <input type="text" name="sponsor[name]" value="<%=@sponsor.name%>"><br></br>
+
+  <input type="submit" name="" value="Update Sponsor Name"><br></br>
+</form>

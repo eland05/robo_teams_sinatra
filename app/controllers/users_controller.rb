@@ -10,7 +10,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/teams"
     else
-      redirect to '/signup'
+      flash[:error] = "Your username or password was incorrect."
+      redirect to '/'
     end
   end
 
@@ -24,6 +25,11 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if params[:username] == "" || params[:password] == ""
+      flash[:error] = "Please be sure to complete both the username and password."
+      redirect to '/signup'
+
+    elsif User.find_by(username: params[:username])
+      flash[:error] = "That username is already taken, please try a different one."
       redirect to '/signup'
     else
       @user = User.create(:username => params[:username], :password => params[:password])
@@ -35,6 +41,7 @@ class UsersController < ApplicationController
   get '/logout' do
     if logged_in?
       session.destroy
+      flash[:logged_out] = "You have been logged out."
       redirect to '/'
     else
       redirect to '/'

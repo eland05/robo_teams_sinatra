@@ -1,13 +1,20 @@
-<h4>Team Info:</h4>
-<form class="" action="/teams/new" method="post">
+<h3>Edit Team <%=@team.number%> Info:</h3>
+<form class="" action="/teams/<%=@team.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
 
   <label for="team_name">Team Name:</label>
-  <input type="text" name="team[team_name]" value=""><br>
+  <input type="text" name="team[team_name]" value="<%=@team.team_name%>"><br>
 
   <label for="number">Team Number:</label>
-  <input type="text" name="team[number]" value=""><br>
+  <input type="text" name="team[number]" value="<%=@team.number%>"><br>
 
-  <h4>Team Members:</h4>
+<h4> Current Team Members:</h4>
+
+  <%@team.members.each do |member|%>
+    <input type="checkbox" name="team[member_ids][]" value="<%=member.id%>" id="<%=member.id%>" <%='checked' if @team.members.include?(member)%>><%=member.name%></input><br>
+  <%end%>
+
+  <h4> Add Team Members:</h4>
 
   <label for="new_member_name_1">Member Name:</label>
   <input type="text" id = "new_member_name_1" name="[new_members][][name]" value="">
@@ -35,10 +42,10 @@
   <input type="text" id = "new_member_title_5" name="[new_members][][title]" value="">
   <br></br>
 
-  <h4>Team Sponsors:</h4>
+  <h4>Change or Add Team Sponsors:</h4>
 
   <%Sponsor.all.each do |sponsor|%>
-    <input type="checkbox" name="team[sponsor_ids][]" value="<%=sponsor.id%>" id="<%=sponsor.id%>"><%=sponsor.name%></input>
+    <input type="checkbox" name="team[sponsor_ids][]" value="<%=sponsor.id%>" id="<%=sponsor.id%>" <%='checked' if @team.sponsors.include?(sponsor)%>><%=sponsor.name%></input>
   <%end%>
   <br></br>
   <label>and/or, create a new sponsor:</label>
@@ -47,6 +54,7 @@
   <input type="text" name="new_sponsor[name]"></input>
   <br></br>
 
-  <input type="submit" name="" value="Create Team">
+  <input type="submit" name="" value="Update Team">
 </form>
 <br></br>
+<a href="/teams/<%=@team.id%>/delete">Delete This Team</a>
