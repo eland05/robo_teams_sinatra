@@ -7,3 +7,13 @@ Teams can have many members with different titles (student, mentor or coach).
 Teams can also have many sponsors and sponsors can have many teams.
 
 To run this app, clone it, run rake db:migrate and then run shotgun.
+
+Author: Erin Land
+
+Built With:
+Sinatra
+ActiveRecord
+Atom
+
+License:
+This project is licensed under Flatiron School - (license.md)

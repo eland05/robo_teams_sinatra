@@ -43,27 +43,23 @@ class TeamsController < ApplicationController
   end
 
   get '/teams/:id/edit' do
-    if logged_in? && @team = current_user.teams.find_by_id(params[:id])
-        erb :'teams/edit'
+    authenticate_user!
+    if @team = current_user.teams.find_by_id(params[:id])
+      erb :'teams/edit'
     else
-      redirect to '/'
+      redirect to '/teams'
     end
   end
 
   patch '/teams/:id' do
-    @team = current_user.teams.find_by_id(params[:id])
-    @team.update(params[:team])
-    params[:new_members].each do |m|
-      if m["name"] != ""
-        @team.members.create(m)
-      end
+    authenticate_user!
+    if @team = current_user.teams.find_by_id(params[:id])
+      @team.update(params[:team])
+      flash[:update] = "Your team has been updated."
+      redirect to "/teams/#{@team.id}"
+    else
+      redirect '/teams'
     end
-
-    if params[:new_sponsor][:name] != ""
-      @team.sponsors << Sponsor.create(params[:new_sponsor])
-    end
-    flash[:update] = "Your team has been updated."
-    redirect to "/teams/#{@team.id}"
   end
 
   get '/teams/:id/delete' do
